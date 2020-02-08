@@ -12,28 +12,19 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-//las virtual keys están en una de las librerías de windows
 
+// La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0xc0a
 
-// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
-
-namespace NavApp1
+namespace NavApp1_versiónparamipc_
 {
     /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// Página vacía que se puede usar de forma independiente o a la que se puede navegar dentro de un objeto Frame.
     /// </summary>
-    public sealed partial class Page1 : Page
+    public sealed partial class MainPage : Page
     {
-        public Page1()
+        public MainPage()
         {
             this.InitializeComponent();
-        }
-
-        private void HyperlinkButton_Click(object sender, RoutedEventArgs e)
-        {
-
-            this.Frame.Navigate(typeof(Page2));
-
         }
     }
 }

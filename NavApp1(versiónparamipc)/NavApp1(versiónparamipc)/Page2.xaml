@@ -1,0 +1,16 @@
+﻿<Page
+    x:Class="NavApp1_versiónparamipc_.Page2"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:NavApp1_versiónparamipc_"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <TextBlock HorizontalAlignment="Left" Text="Page 2" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <HyperlinkButton Content="Go to page 1" HorizontalAlignment="Center" Click="HyperlinkButton_Click"/>
+
+    </Grid>
+</Page>
