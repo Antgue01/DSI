@@ -9,9 +9,38 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <TextBlock x:Name="pageTitle" Text="Page 2" />
-        <HyperlinkButton Content="Click to go to page 1"
+
+        <CommandBar>
+            <CommandBar.Content>
+                <Grid/>
+            </CommandBar.Content>
+            <AppBarButton Icon="Accept" Label="AppBarButton"/>
+            <AppBarButton Icon="Cancel" Label="AppBarButton"/>
+
+        </CommandBar>
+        <Border BorderThickness="1" BorderBrush="Black">
+            <Button x:Name="BackButton" Click="Back_Click" HorizontalAlignment="Left" VerticalAlignment="Top"  Style="{StaticResource NavigationBackButtonNormalStyle}"/>
+            
+        </Border>
+        <TextBlock x:Name="pageTitle" Text="Page 2" Margin="0,48,1430,933" RenderTransformOrigin="0.5,0.5">
+            <TextBlock.RenderTransform>
+                <CompositeTransform ScaleY="1"/>
+            </TextBlock.RenderTransform>
+        </TextBlock>
+
+        <StackPanel>
+            <TextBlock HorizontalAlignment="Center" Name="greeting" RenderTransformOrigin="0.5,0.5">
+                <TextBlock.RenderTransform>
+                    <CompositeTransform TranslateY="57"/>
+                </TextBlock.RenderTransform>
+            </TextBlock>
+            <HyperlinkButton Content="Click to go to page 1"
  Click="HyperlinkButton_Click"
- HorizontalAlignment="Center"/>
+HorizontalAlignment="Center" Height="70" RenderTransformOrigin="0.5,0.5">
+                <HyperlinkButton.RenderTransform>
+                    <CompositeTransform ScaleY="1" TranslateX="0" TranslateY="38"/>
+                </HyperlinkButton.RenderTransform>
+            </HyperlinkButton>
+        </StackPanel>
     </Grid>
 </Page>
