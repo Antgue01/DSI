@@ -10,8 +10,12 @@
 
     <Grid>
         <TextBlock x:Name="pageTitle" Text="Page 1" />
-        <HyperlinkButton Content="Click to go to page 2"
+        <StackPanel>
+            <TextBlock HorizontalAlignment="Center" Text="Enter your name"/>
+            <TextBox HorizontalAlignment="Center" Width="200" Name="name"/>
+            <HyperlinkButton Content="Click to go to page 2"
  Click="HyperlinkButton_Click"
- HorizontalAlignment="Center"/>
+HorizontalAlignment="Center"/>
+        </StackPanel>
     </Grid>
 </Page>
