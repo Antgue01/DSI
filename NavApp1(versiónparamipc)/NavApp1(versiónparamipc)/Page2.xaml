@@ -9,8 +9,14 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <TextBlock HorizontalAlignment="Left" Text="Page 2" TextWrapping="Wrap" VerticalAlignment="Top"/>
-        <HyperlinkButton Content="Go to page 1" HorizontalAlignment="Center" Click="HyperlinkButton_Click"/>
-
+        <TextBlock HorizontalAlignment="Left" Text="Page 2" TextWrapping="Wrap" VerticalAlignment="Top" Margin="10,42,0,0"/>
+        <StackPanel>
+            <TextBlock HorizontalAlignment="Center" Name="greeting"/>
+            <HyperlinkButton Content="Click to go to page 1"
+ Click="HyperlinkButton_Click"
+HorizontalAlignment="Center"/>
+        </StackPanel>
+        <Button Name="BackButton" VerticalAlignment="Top" HorizontalAlignment="Left"
+Style="{StaticResource NavigationBackButtonNormalStyle}" Click="Back_Click"/>
     </Grid>
 </Page>

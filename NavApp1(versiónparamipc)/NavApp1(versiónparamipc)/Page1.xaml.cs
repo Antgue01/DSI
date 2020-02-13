@@ -25,11 +25,13 @@ namespace NavApp1_versiónparamipc_
         public Page1()
         {
             this.InitializeComponent();
+            this.NavigationCacheMode =
+Windows.UI.Xaml.Navigation.NavigationCacheMode.Enabled;
         }
 
         private void HyperlinkButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(Page2));
+            this.Frame.Navigate(typeof(Page2),name.Text);
         }
     }
 }

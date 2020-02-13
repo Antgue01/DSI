@@ -9,7 +9,13 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <HyperlinkButton Content="Go to Page 2" HorizontalAlignment="Center" Click="HyperlinkButton_Click"/>
+        <StackPanel>
+            <TextBlock HorizontalAlignment="Center" Text="Enter your name"/>
+            <TextBox HorizontalAlignment="Center" Width="200" Name="name"/>
+            <HyperlinkButton Content="Click to go to page 2"
+ Click="HyperlinkButton_Click"
+HorizontalAlignment="Center"/>
+        </StackPanel>
         <TextBlock HorizontalAlignment="Left" Text="Page 1" TextWrapping="Wrap" VerticalAlignment="Top"/>
 
     </Grid>
