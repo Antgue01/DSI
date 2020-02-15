@@ -14,20 +14,20 @@
                     <VisualState.StateTriggers>
                         <AdaptiveTrigger MinWindowWidth="641">
                         </AdaptiveTrigger>
-                        
+
                     </VisualState.StateTriggers>
                 </VisualState>
                 <VisualState x:Name="other">
                     <VisualState.StateTriggers>
                         <AdaptiveTrigger MinWindowWidth="0">
-                            
+
                         </AdaptiveTrigger>
-                    
+
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="boton.HorizontalAlignment" Value="Left"></Setter>
                     </VisualState.Setters>
-                        
+
                 </VisualState>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
@@ -55,8 +55,8 @@
             <TextBlock Foreground="White" FontSize="25" Text="Low: 43°" Margin="0,0,20,0"/>
             <TextBlock Foreground="White" FontSize="25" Text="Feels like: 63°"/>
         </StackPanel>        <Image Margin="20" Source="Assets/partially-cloudy.png"/>
-        <TextBox Name="cajitacontexto" HorizontalAlignment="Center" Grid.Row="2" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Center" Width="562" TextChanged="TextBox_TextChanged" RenderTransformOrigin="0.5,0.5">
+        <TextBox Name="cajitacontexto" HorizontalAlignment="Center" Grid.Row="2" Text="" TextWrapping="Wrap" VerticalAlignment="Center" Width="562" TextChanged="TextBox_TextChanged" RenderTransformOrigin="0.5,0.5" KeyDown="Muestra_Boton">
         </TextBox>
-        <Button x:Name="boton" Content="Button" HorizontalAlignment="Right" VerticalAlignment="Bottom" Grid.Row="2" Grid.Column="1"/>
+        <Button x:Name="boton" Content="Button" HorizontalAlignment="Right" VerticalAlignment="Top" Grid.Row="2" Grid.Column="1" Margin="0,7,0,0" Click="mapa" Visibility="Collapsed"/>
     </Grid>
 </Page>

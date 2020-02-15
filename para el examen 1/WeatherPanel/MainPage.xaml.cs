@@ -25,11 +25,25 @@ namespace WeatherPanel
         public MainPage()
         {
             this.InitializeComponent();
+            this.NavigationCacheMode = Windows.UI.Xaml.Navigation.NavigationCacheMode.Enabled;
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             ciudad.Text = "in "+cajitacontexto.Text;
+        }
+
+        private void mapa(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(ErMapa),cajitacontexto.Text);
+        }
+
+        private void Muestra_Boton(object sender, KeyRoutedEventArgs e)
+        {
+            if (boton.Visibility == Visibility.Collapsed && e.Key == Windows.System.VirtualKey.Enter)
+                boton.Visibility = Visibility.Visible;
+            else if (boton.Visibility == Visibility.Visible  && cajitacontexto.Text=="" && e.Key == Windows.System.VirtualKey.Back)
+                boton.Visibility = Visibility.Collapsed;
         }
     }
 }
