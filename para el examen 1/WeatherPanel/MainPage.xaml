@@ -10,13 +10,6 @@
     <Grid>
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup>
-                <VisualState x:Name="maxSize">
-                    <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="641">
-                        </AdaptiveTrigger>
-
-                    </VisualState.StateTriggers>
-                </VisualState>
                 <VisualState x:Name="other">
                     <VisualState.StateTriggers>
                         <AdaptiveTrigger MinWindowWidth="0">
@@ -26,8 +19,21 @@
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="boton.HorizontalAlignment" Value="Left"></Setter>
+                        <Setter Target="boton.Foreground" Value="Red"></Setter>
+
                     </VisualState.Setters>
 
+                </VisualState>
+                <VisualState x:Name="maxSize">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="641">
+                        
+                        </AdaptiveTrigger>
+
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="boton.Foreground" Value="AliceBlue"></Setter>
+                    </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
@@ -57,6 +63,6 @@
         </StackPanel>        <Image Margin="20" Source="Assets/partially-cloudy.png"/>
         <TextBox Name="cajitacontexto" HorizontalAlignment="Center" Grid.Row="2" Text="" TextWrapping="Wrap" VerticalAlignment="Center" Width="562" TextChanged="TextBox_TextChanged" RenderTransformOrigin="0.5,0.5" KeyDown="Muestra_Boton">
         </TextBox>
-        <Button x:Name="boton" Content="Button" HorizontalAlignment="Right" VerticalAlignment="Top" Grid.Row="2" Grid.Column="1" Margin="0,7,0,0" Click="mapa" Visibility="Collapsed"/>
+        <Button x:Name="boton"  Content="Button" HorizontalAlignment="Right" VerticalAlignment="Top" Grid.Row="2" Grid.Column="1" Margin="0,7,0,0" Click="mapa" Visibility="Collapsed"/>
     </Grid>
 </Page>
