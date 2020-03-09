@@ -56,6 +56,12 @@
                         SnapsTo="Ticks"
                         ValueChanged="{x:Bind DetermineItemSize}"
                         Header="Grid item size" />
+                <Slider x:Name="FontZoom"
+                        Minimum="10"
+                        Maximum="50"
+                        Value="30"
+                        Header="Font Size" ValueChanged="AjustarTamanoFuente"
+                        />
                 <ToggleSwitch x:Name="FitScreenToggle"
                               Header="Fit to screen"
                               MinWidth="100"
@@ -69,19 +75,23 @@
                            HorizontalAlignment="Center" />
         </ItemsPanelTemplate>
 
-        <DataTemplate x:Key="ImageGridView_DefaultItemTemplate"
+        <DataTemplate
+            x:Key="exam"
                       x:DataType="local:ImageFileInfo">
-            <Grid Height="{Binding ItemSize, ElementName=page}"
+            <Grid Height="30"
                   Width="{Binding ItemSize, ElementName=page}"
                   Margin="{StaticResource LargeItemMargin}">
                 <Grid.RowDefinitions>
-                    <RowDefinition />
-                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="auto" />
                 </Grid.RowDefinitions>
+                <StackPanel Orientation="Horizontal" Grid.Row="0">
+                    
                 <Image x:Name="ItemImage"
                        Stretch="Uniform"
                        Opacity="0" />
-                <StackPanel Orientation="Vertical"
+                </StackPanel>
+                <StackPanel Orientation="Horizontal"
                             Grid.Row="1">
                     <TextBlock Text="{x:Bind ImageTitle, Mode=OneWay}"
                                HorizontalAlignment="Center"
@@ -114,19 +124,19 @@
                 </StackPanel>
             </Grid>
         </DataTemplate>
-        <DataTemplate x:Key="exam"
+        <DataTemplate  x:Key="ImageGridView_DefaultItemTemplate"
                       x:DataType="local:ImageFileInfo">
-            <Grid Height="30"
+            <Grid Height="{Binding ItemSize, ElementName=page}"
                   Width="{Binding ItemSize, ElementName=page}"
                   Margin="{StaticResource LargeItemMargin}">
                 <Grid.RowDefinitions>
                     <RowDefinition />
-                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
                 <Image x:Name="ItemImage"
                        Stretch="Uniform"
                        Opacity="0" />
-                <StackPanel Orientation="Horizontal"
+                <StackPanel Orientation="Vertical"
                             Grid.Row="1">
                     <TextBlock Text="{x:Bind ImageTitle, Mode=OneWay}"
                                HorizontalAlignment="Center"
@@ -206,7 +216,7 @@
 
     <RelativePanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <TextBlock x:Name="TitleTextBlock"
-                   Text="Collection"
+                   Text="Collection(View Mode)"
                    Style="{StaticResource TitleTextBlockStyle}"
                    Margin="24,0,0,24" />
 
@@ -218,13 +228,16 @@
             <AppBarButton Icon="Zoom"
                           Label="Zoom"
                           Flyout="{StaticResource zoomFlyout}" />
+            <AppBarToggleButton Click="Change_Mode" Content="Change mode" x:Name="toggle_untoggle"/>
+            <AppBarButton Content="Edit" Click="Edit" />
+            <AppBarButton Content="Back" Click="Back"/>
+            <AppBarButton Content="Forward" Click="Forward"/>
         </CommandBar>
 
         <GridView x:Name="ImageGridView"
                   ContainerContentChanging="ImageGridView_ContainerContentChanging"
                   animations:ReorderGridAnimation.Duration="400"
                   Margin="0,0,0,8"
-                  ItemClick="ImageGridView_ItemClick"
                   IsItemClickEnabled="True"
                   ItemsSource="{x:Bind Images, Mode=OneWay}"
                   RelativePanel.AlignLeftWithPanel="True"
@@ -232,9 +245,8 @@
                   RelativePanel.Below="TitleTextBlock"
                   Loaded="{x:Bind StartConnectedAnimationForBackNavigation}"
                   ItemsPanel="{StaticResource ImageGridView_ItemsPanelTemplate}"
-                  ItemTemplate="{StaticResource exam}"
-                  ItemContainerStyle="{StaticResource ImageGridView_DefaultItemContainerStyle}">
-        </GridView>
+                  ItemTemplate="{StaticResource ImageGridView_DefaultItemTemplate}"
+                  ItemContainerStyle="{StaticResource ImageGridView_DefaultItemContainerStyle}" ItemClick="ImageGridView_ItemClick"/>
 
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup>

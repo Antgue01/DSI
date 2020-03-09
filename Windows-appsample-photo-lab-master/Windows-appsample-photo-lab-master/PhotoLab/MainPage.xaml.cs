@@ -92,11 +92,13 @@ namespace PhotoLab
 
         private void ImageGridView_ItemClick(object sender, ItemClickEventArgs e)
         {
-            // Prepare the connected animation for navigation to the detail page.
-            persistedItem = e.ClickedItem as ImageFileInfo;
-            ImageGridView.PrepareConnectedAnimation("itemAnimation", e.ClickedItem, "ItemImage");
+            if (ImageGridView.SelectedItem == e.ClickedItem)
+                ImageGridView.SelectedItem = null;
+            //    // Prepare the connected animation for navigation to the detail page.
+            //    //persistedItem = e.ClickedItem as ImageFileInfo;
+            //    //ImageGridView.PrepareConnectedAnimation("itemAnimation", e.ClickedItem, "ItemImage");
 
-            this.Frame.Navigate(typeof(DetailPage), e.ClickedItem);
+            //    //this.Frame.Navigate(typeof(DetailPage), e.ClickedItem);
         }
 
         private async Task GetItemsAsync()
@@ -241,6 +243,50 @@ namespace PhotoLab
                     image.Source = bitmapImage;
                 }
             }
+        }
+
+        private void Change_Mode(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            if ((bool)toggle_untoggle.IsChecked)
+            {
+                TitleTextBlock.Text = "Collection(List Mode)";
+                ImageGridView.ItemTemplate = (Windows.UI.Xaml.DataTemplate)
+Resources["exam"];
+            }
+            else
+            {
+                TitleTextBlock.Text = "Collection(View Mode)";
+                ImageGridView.ItemTemplate = (Windows.UI.Xaml.DataTemplate)
+Resources["ImageGridView_DefaultItemTemplate"];
+            }
+        }
+
+        private void Edit(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            if (ImageGridView.SelectedItem != null)
+            {
+                persistedItem = ImageGridView.SelectedItem as ImageFileInfo;
+                ImageGridView.PrepareConnectedAnimation("itemAnimation", ImageGridView.SelectedItem, "ItemImage");
+
+                this.Frame.Navigate(typeof(DetailPage), ImageGridView.SelectedItem);
+            }
+        }
+
+        private void Back(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            if (ImageGridView.SelectedItem != null && ImageGridView.SelectedIndex > 0)
+                Images.Move(ImageGridView.SelectedIndex, ImageGridView.SelectedIndex - 1);
+        }
+
+        private void Forward(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            if (ImageGridView.SelectedItem != null && ImageGridView.SelectedIndex < Images.Count -1)
+                Images.Move(ImageGridView.SelectedIndex, ImageGridView.SelectedIndex + 1);
+        }
+
+        private void AjustarTamanoFuente(object sender, Windows.UI.Xaml.Controls.Primitives.RangeBaseValueChangedEventArgs e)
+        {
+               
         }
     }
 }

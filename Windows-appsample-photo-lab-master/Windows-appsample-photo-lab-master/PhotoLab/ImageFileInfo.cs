@@ -79,8 +79,10 @@ namespace PhotoLab
 
         public string ImageDimensions => $"{ImageProperties.Width} x {ImageProperties.Height}";
 
+
         public string ImageTitle
         {
+            
             get => String.IsNullOrEmpty(ImageProperties.Title) ? ImageName : ImageProperties.Title;
             set
             {
@@ -91,6 +93,7 @@ namespace PhotoLab
                     OnPropertyChanged();
                 }
             }
+            
         }
 
         public int ImageRating
