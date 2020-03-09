@@ -114,51 +114,6 @@
                 </StackPanel>
             </Grid>
         </DataTemplate>
-        <DataTemplate x:Key="exam"
-                      x:DataType="local:ImageFileInfo">
-            <Grid Height="30"
-                  Width="{Binding ItemSize, ElementName=page}"
-                  Margin="{StaticResource LargeItemMargin}">
-                <Grid.RowDefinitions>
-                    <RowDefinition />
-                    <RowDefinition Height="auto" />
-                </Grid.RowDefinitions>
-                <Image x:Name="ItemImage"
-                       Stretch="Uniform"
-                       Opacity="0" />
-                <StackPanel Orientation="Horizontal"
-                            Grid.Row="1">
-                    <TextBlock Text="{x:Bind ImageTitle, Mode=OneWay}"
-                               HorizontalAlignment="Center"
-                               Style="{StaticResource SubtitleTextBlockStyle}" />
-                    <StackPanel Orientation="Horizontal"
-                                HorizontalAlignment="Center">
-                        <TextBlock Text="{x:Bind ImageFileType}"
-                                   HorizontalAlignment="Center"
-                                   Style="{StaticResource CaptionTextBlockStyle}" />
-                        <TextBlock Text="{x:Bind ImageDimensions}"
-                                   HorizontalAlignment="Center"
-                                   Style="{StaticResource CaptionTextBlockStyle}"
-                                   Margin="8,0,0,0" />
-                    </StackPanel>
-                    <telerikInput:RadRating Value="{x:Bind ImageRating, Mode=OneWay}"
-                                            IsReadOnly="True">
-                        <telerikInput:RadRating.FilledIconContentTemplate>
-                            <DataTemplate>
-                                <SymbolIcon Symbol="SolidStar"
-                                            Foreground="White" />
-                            </DataTemplate>
-                        </telerikInput:RadRating.FilledIconContentTemplate>
-                        <telerikInput:RadRating.EmptyIconContentTemplate>
-                            <DataTemplate>
-                                <SymbolIcon Symbol="OutlineStar"
-                                            Foreground="White" />
-                            </DataTemplate>
-                        </telerikInput:RadRating.EmptyIconContentTemplate>
-                    </telerikInput:RadRating>
-                </StackPanel>
-            </Grid>
-        </DataTemplate>
 
         <Style x:Key="ImageGridView_DefaultItemContainerStyle"
                TargetType="GridViewItem">
@@ -232,7 +187,7 @@
                   RelativePanel.Below="TitleTextBlock"
                   Loaded="{x:Bind StartConnectedAnimationForBackNavigation}"
                   ItemsPanel="{StaticResource ImageGridView_ItemsPanelTemplate}"
-                  ItemTemplate="{StaticResource exam}"
+                  ItemTemplate="{StaticResource ImageGridView_DefaultItemTemplate}"
                   ItemContainerStyle="{StaticResource ImageGridView_DefaultItemContainerStyle}">
         </GridView>
 
