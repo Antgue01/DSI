@@ -152,6 +152,38 @@ namespace PhotoLab
             return info;
         }
 
+        public double TamanoFuente
+        {
+            get => _TamanoFuente;
+            set
+            {
+                if (_TamanoFuente != value)
+                {
+                    _TamanoFuente = value;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(TamanoFuente)));
+                }
+            }
+        }
+        private double _TamanoFuente;
+
+        public double DinFontSize
+        {
+            get => _DinFontSize;
+            set
+            {
+                if (_DinFontSize != value)
+                {
+                    _DinFontSize = value;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(DinFontSize)));
+                }
+            }
+        }
+        private double _DinFontSize;
+        private void DetermineDinFontSize()
+        {
+            DinFontSize =  ItemSize / 10;
+        }
+
         public double ItemSize
         {
             get => _itemSize;
@@ -166,6 +198,10 @@ namespace PhotoLab
         }
         private double _itemSize;
 
+        private void DetermineTamanoFuente()
+        {
+            TamanoFuente = FontZoom.Value;
+        }
         private void DetermineItemSize()
         {
             if (FitScreenToggle != null
@@ -200,6 +236,10 @@ namespace PhotoLab
             {
                 ItemSize = ZoomSlider.Value;
             }
+            //            if (
+            //            ImageGridView.ItemTemplate == (Windows.UI.Xaml.DataTemplate)
+            //Resources["ImageGridView_DefaultItemTemplate"])
+            DetermineDinFontSize();
         }
 
         private void ImageGridView_ContainerContentChanging(ListViewBase sender, ContainerContentChangingEventArgs args)
@@ -280,13 +320,10 @@ Resources["ImageGridView_DefaultItemTemplate"];
 
         private void Forward(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            if (ImageGridView.SelectedItem != null && ImageGridView.SelectedIndex < Images.Count -1)
+            if (ImageGridView.SelectedItem != null && ImageGridView.SelectedIndex < Images.Count - 1)
                 Images.Move(ImageGridView.SelectedIndex, ImageGridView.SelectedIndex + 1);
         }
 
-        private void AjustarTamanoFuente(object sender, Windows.UI.Xaml.Controls.Primitives.RangeBaseValueChangedEventArgs e)
-        {
-               
-        }
+
     }
 }

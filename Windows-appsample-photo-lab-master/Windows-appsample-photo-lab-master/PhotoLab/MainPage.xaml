@@ -60,7 +60,7 @@
                         Minimum="10"
                         Maximum="50"
                         Value="30"
-                        Header="Font Size" ValueChanged="AjustarTamanoFuente"
+                        Header="Font Size" ValueChanged="{x:Bind DetermineTamanoFuente}"
                         />
                 <ToggleSwitch x:Name="FitScreenToggle"
                               Header="Fit to screen"
@@ -101,6 +101,7 @@
                     <TextBlock Text="{x:Bind ImageTitle, Mode=OneWay}"
                                HorizontalAlignment="Right"
                                Margin="5,0,5,0"
+                               FontSize="{Binding TamanoFuente,ElementName=page}"
                                Style="{StaticResource SubtitleTextBlockStyle}" />
                     <StackPanel Orientation="Horizontal"
                                 HorizontalAlignment="Center">
@@ -148,6 +149,7 @@
                             Grid.Row="1">
                     <TextBlock Text="{x:Bind ImageTitle, Mode=OneWay}"
                                HorizontalAlignment="Center"
+                               FontSize="{Binding DinFontSize,ElementName=page}"
                                Style="{StaticResource SubtitleTextBlockStyle}" />
                     <StackPanel Orientation="Horizontal"
                                 HorizontalAlignment="Center">
